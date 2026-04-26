@@ -9,7 +9,7 @@ pipeline {
         stage('CHECKOUT') {
             steps {
                 // Replace with your actual GitHub URL during the exam
-                git 'https://github.com/vvce23ise0051-creator/she.git'
+                git branch: 'main', url: 'https://github.com/vvce23ise0051-creator/she.git'
             }
         }
 
