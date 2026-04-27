@@ -30,12 +30,4 @@ pipeline {
         }
     }
 
-    post {
-    success {
-        bat 'curl -X POST -H "Content-type: application/json" --data "{\\"text\\":\\"Build SUCCESS\\"}" https://hooks.slack.com/services/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'
-    }
-    failure {
-        bat 'curl -X POST -H "Content-type: application/json" --data "{\\"text\\":\\"Build FAILED\\"}" https://hooks.slack.com/services/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'
-    }
-}
-}
+    
