@@ -6,9 +6,9 @@ pipeline {
     }
 
     stages {
+
         stage('CHECKOUT') {
             steps {
-                // Replace with your actual GitHub URL during the exam
                 git branch: 'main', url: 'https://github.com/vvce23ise0051-creator/she.git'
             }
         }
@@ -27,6 +27,24 @@ pipeline {
                     bat 'mvn test'
                 }
             }
+        }
+    }
+
+    post {
+        success {
+            bat '''
+            curl -X POST -H "Content-type: application/json" ^
+            --data "{\\"text\\":\\"✅ Jenkins Build SUCCESS\\"}" ^
+            https://hooks.slack.com/services/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
+            '''
+        }
+
+        failure {
+            bat '''
+            curl -X POST -H "Content-type: application/json" ^
+            --data "{\\"text\\":\\"❌ Jenkins Build FAILED\\"}" ^
+            https://hooks.slack.com/services/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
+            '''
         }
     }
 }
